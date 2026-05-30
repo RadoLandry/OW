@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "nom": "Marie & Jean",
+    "message": "Tous nos vœux de bonheur pour cette nouvelle vie à deux ! ✨",
+    "date": "2026-05-20T10:00:00Z"
+  },
+  {
+    "id": 2,
+    "nom": "Famille Dupont",
+    "message": "Que votre amour grandisse chaque jour davantage. Félicitations ! 💕",
+    "date": "2026-05-22T14:30:00Z"
+  },
+  {
+    "id": 1780101935458,
+    "nom": "test",
+    "message": "message test",
+    "date": "2026-05-30T00:45:35.458Z"
+  }
+]

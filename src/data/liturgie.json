@@ -1,0 +1,51 @@
+[
+  {
+    "id": "intro",
+    "etape": "Entrée",
+    "heure": "15:00",
+    "titre_chant": "Jubilez, criez de joie",
+    "paroles": "R. Jubilez ! Criez de joie ! Acclamez le Dieu trois fois Saint !\nVenez le prier dans la paix, témoigner de son Amour.\nJubilez ! Criez de joie ! Pour Dieu notre Dieu."
+  },
+  {
+    "id": "lecture",
+    "etape": "Première Lecture",
+    "heure": "15:15",
+    "titre_chant": "Psaume de la Création",
+    "paroles": "R. Mon Dieu, tu es grand, tu es beau,\nDieu vivant, Dieu très haut,\nTu es le Dieu d'amour."
+  },
+  {
+    "id": "evangile",
+    "etape": "Évangile",
+    "heure": "15:25",
+    "titre_chant": "Alléluia",
+    "paroles": "R. Alléluia, Alléluia, Alléluia !\nDieu est Amour, celui qui aime est né de Dieu,\nil connaît Dieu. Alléluia !"
+  },
+  {
+    "id": "voeux",
+    "etape": "Échange des vœux",
+    "heure": "15:35",
+    "titre_chant": "Que vive mon âme à te louer",
+    "paroles": "R. Que vive mon âme à te louer !\nTu es mon Dieu, je n'ai pas d'autre joie\nque de marcher vers toi."
+  },
+  {
+    "id": "offertoire",
+    "etape": "Offertoire",
+    "heure": "15:50",
+    "titre_chant": "Je vous salue Marie",
+    "paroles": "Je vous salue Marie, pleine de grâce,\nLe Seigneur est avec vous.\nVous êtes bénie entre toutes les femmes\net Jésus, le fruit de vos entrailles, est béni."
+  },
+  {
+    "id": "communion",
+    "etape": "Communion",
+    "heure": "16:05",
+    "titre_chant": "Tu es là au cœur de nos vies",
+    "paroles": "R. Tu es là au cœur de nos vies,\net c'est toi qui nous fais vivre,\nTu es là au cœur de nos vies,\nbien vivant, ô Jésus-Christ."
+  },
+  {
+    "id": "sortie",
+    "etape": "Sortie",
+    "heure": "16:20",
+    "titre_chant": "Bénissez Dieu",
+    "paroles": "R. Bénissez Dieu, vous serviteurs de Dieu,\nRedites sans fin le cantique éternel,\nAu Dieu de l'univers, au Roi du Ciel !"
+  }
+]
