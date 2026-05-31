@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import "swiper/css";
 
 interface Voeu {
-  id: number;
+  id: string | number;
   nom: string;
   message: string;
   date: string;
@@ -38,7 +38,7 @@ export default function VoeuxSlider() {
       });
       if (res.ok) {
         const newVoeu = await res.json();
-        setVoeux((prev) => [...prev, newVoeu]);
+        setVoeux((prev) => [newVoeu, ...prev]);
         setStatus("success");
         (e.target as HTMLFormElement).reset();
         setTimeout(() => setStatus("idle"), 3000);
@@ -98,6 +98,7 @@ export default function VoeuxSlider() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <Swiper
+            key={voeux.length}
             modules={[Autoplay]}
             autoplay={{ delay: 5000, disableOnInteraction: false }}
             spaceBetween={30}
