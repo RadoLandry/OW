@@ -59,6 +59,9 @@ export default function Dashboard() {
   const [voeux, setVoeux] = useState<Voeu[]>([]);
   const [loading, setLoading] = useState(true);
   const [modal, setModal] = useState<ConfirmModal>({ open: false, message: "", onConfirm: () => {} });
+  const [rsvpPage, setRsvpPage] = useState(1);
+  const [voeuxPage, setVoeuxPage] = useState(1);
+  const PAGE_SIZE = 5;
 
   const fetchRsvps = async () => {
     try {
@@ -132,7 +135,7 @@ export default function Dashboard() {
 
         <div className="flex border-b">
           <button
-            onClick={() => setActiveTab("rsvp")}
+            onClick={() => { setActiveTab("rsvp"); setRsvpPage(1); }}
             className={`flex-1 py-4 flex items-center justify-center gap-2 font-medium transition-colors ${
               activeTab === "rsvp" ? "border-b-2 border-teal-800 text-teal-800 bg-teal-50/50" : "text-gray-500 hover:bg-gray-50"
             }`}
@@ -141,7 +144,7 @@ export default function Dashboard() {
             Présences ({rsvps.length})
           </button>
           <button
-            onClick={() => setActiveTab("voeux")}
+            onClick={() => { setActiveTab("voeux"); setVoeuxPage(1); }}
             className={`flex-1 py-4 flex items-center justify-center gap-2 font-medium transition-colors ${
               activeTab === "voeux" ? "border-b-2 border-teal-800 text-teal-800 bg-teal-50/50" : "text-gray-500 hover:bg-gray-50"
             }`}
@@ -164,7 +167,7 @@ export default function Dashboard() {
                   </tr>
                 </thead>
                 <tbody>
-                  {rsvps.map((rsvp) => (
+                  {rsvps.slice((rsvpPage - 1) * PAGE_SIZE, rsvpPage * PAGE_SIZE).map((rsvp) => (
                     <tr key={rsvp.id} className="hover:bg-gray-50/50 border-b last:border-0 transition-colors">
                       <td className="p-3 font-medium">{rsvp.nom}</td>
                       <td className="p-3">
@@ -173,7 +176,7 @@ export default function Dashboard() {
                         </span>
                       </td>
                       <td className="p-3 text-gray-500 text-sm">
-                        {new Date(rsvp.date).toLocaleDateString("fr-FR", { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })}
+                        {new Date(rsvp.date).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", year: "numeric" })} {new Date(rsvp.date).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}
                       </td>
                       <td className="p-3 text-right">
                         <div className="flex justify-end gap-2 text-gray-400">
@@ -193,6 +196,27 @@ export default function Dashboard() {
                   )}
                 </tbody>
               </table>
+              {rsvps.length > PAGE_SIZE && (
+                <div className="flex items-center justify-between mt-4 text-sm text-gray-600">
+                  <span>Page {rsvpPage} / {Math.ceil(rsvps.length / PAGE_SIZE)}</span>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setRsvpPage(p => Math.max(1, p - 1))}
+                      disabled={rsvpPage === 1}
+                      className="px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                    >
+                      ← Précédent
+                    </button>
+                    <button
+                      onClick={() => setRsvpPage(p => Math.min(Math.ceil(rsvps.length / PAGE_SIZE), p + 1))}
+                      disabled={rsvpPage === Math.ceil(rsvps.length / PAGE_SIZE)}
+                      className="px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                    >
+                      Suivant →
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           ) : (
             <div className="overflow-x-auto">
@@ -206,12 +230,12 @@ export default function Dashboard() {
                   </tr>
                 </thead>
                 <tbody>
-                  {voeux.map((voeu) => (
+                  {voeux.slice((voeuxPage - 1) * PAGE_SIZE, voeuxPage * PAGE_SIZE).map((voeu) => (
                     <tr key={voeu.id} className="hover:bg-gray-50/50 border-b last:border-0 transition-colors">
                       <td className="p-3 font-medium">{voeu.nom}</td>
                       <td className="p-3 text-gray-700 italic">&quot;{voeu.message}&quot;</td>
                       <td className="p-3 text-gray-500 text-sm">
-                        {new Date(voeu.date).toLocaleDateString("fr-FR", { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })}
+                        {new Date(voeu.date).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", year: "numeric" })} {new Date(voeu.date).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}
                       </td>
                       <td className="p-3 text-right">
                         <div className="flex justify-end gap-2 text-gray-400">
@@ -231,6 +255,27 @@ export default function Dashboard() {
                   )}
                 </tbody>
               </table>
+              {voeux.length > PAGE_SIZE && (
+                <div className="flex items-center justify-between mt-4 text-sm text-gray-600">
+                  <span>Page {voeuxPage} / {Math.ceil(voeux.length / PAGE_SIZE)}</span>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setVoeuxPage(p => Math.max(1, p - 1))}
+                      disabled={voeuxPage === 1}
+                      className="px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                    >
+                      ← Précédent
+                    </button>
+                    <button
+                      onClick={() => setVoeuxPage(p => Math.min(Math.ceil(voeux.length / PAGE_SIZE), p + 1))}
+                      disabled={voeuxPage === Math.ceil(voeux.length / PAGE_SIZE)}
+                      className="px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                    >
+                      Suivant →
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>

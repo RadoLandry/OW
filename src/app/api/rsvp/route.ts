@@ -1,15 +1,13 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-
-const filePath = path.join(process.cwd(), "src/data/rsvp.json");
+import { supabase } from "@/lib/supabase";
 
 export async function GET() {
   try {
-    if (!fs.existsSync(filePath)) {
-      return NextResponse.json([]);
-    }
-    const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+    const { data, error } = await supabase
+      .from("rsvp")
+      .select("*")
+      .order("date", { ascending: true });
+    if (error) throw error;
     return NextResponse.json(data);
   } catch {
     return NextResponse.json([]);
@@ -25,18 +23,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Champs requis manquants" }, { status: 400 });
     }
 
-    const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-    const newEntry = {
-      id: Date.now(),
-      nom,
-      presence,
-      accompagnants: accompagnants || 0,
-      date: new Date().toISOString(),
-    };
-    data.push(newEntry);
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+    const { data, error } = await supabase
+      .from("rsvp")
+      .insert([{ nom, presence, accompagnants: accompagnants || 0 }])
+      .select()
+      .single();
+    if (error) throw error;
 
-    return NextResponse.json(newEntry, { status: 201 });
+    return NextResponse.json(data, { status: 201 });
   } catch {
     return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
   }
@@ -51,9 +45,8 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ error: "ID manquant" }, { status: 400 });
     }
 
-    const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-    const newData = data.filter((item: { id: string | number }) => item.id.toString() !== id);
-    fs.writeFileSync(filePath, JSON.stringify(newData, null, 2));
+    const { error } = await supabase.from("rsvp").delete().eq("id", id);
+    if (error) throw error;
 
     return NextResponse.json({ success: true });
   } catch {
