@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shirt, Car, Bed, Phone, Heart } from "lucide-react";
+import { Crown, Car, Phone, Heart, Mail } from "lucide-react";
 
 const infos = [
   {
-    icon: Shirt,
+    icon: Crown,
     title: "Dress Code",
     description: "Tenue élégante — Couleurs claires recommandées. Évitez le blanc (réservé à la mariée).",
   },
@@ -15,14 +15,14 @@ const infos = [
     description: "Parking gratuit disponible à l'église et au domaine de réception.",
   },
   {
-    icon: Bed,
-    title: "Hébergement",
-    description: "Hôtel Le Jardin — 5 min du lieu de réception. Code promo : MARIAGE2026.",
+    icon: Mail,
+    title: "Mail",
+    description: "Landry : randriaradolandry@gmail.com — Belfah : raharilarissa@gmail.com",
   },
   {
     icon: Phone,
-    title: "Contact Témoins",
-    description: "Sophie : 06 12 34 56 78 — Marc : 06 98 76 54 32",
+    title: "Contact WhatsApp",
+    description: "Landry : 032 44 752 98 — Belfah : 038 11 183 26",
   },
 ];
 

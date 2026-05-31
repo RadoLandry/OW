@@ -95,7 +95,7 @@ export default function Hero() {
       {/* CTA */}
       <motion.a
         href="#rsvp"
-        className="mt-16 px-10 py-4 border border-weddingGold text-weddingGold-dark hover:bg-weddingGold hover:text-white transition-all duration-500 uppercase tracking-[0.2em] text-sm z-10 relative bg-white/50 backdrop-blur hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]"
+        className="mt-16 mb-3 px-10 py-4 border border-weddingGold text-weddingGold-dark hover:bg-weddingGold hover:text-white transition-all duration-500 uppercase tracking-[0.2em] text-sm z-10 relative bg-white/50 backdrop-blur hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}

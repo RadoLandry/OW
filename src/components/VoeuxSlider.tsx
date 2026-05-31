@@ -108,7 +108,7 @@ export default function VoeuxSlider() {
           >
             {voeux.map((v) => (
               <SwiperSlide key={v.id}>
-                <div className="h-50 max-h-52 p-8 border hover:border-weddingGold/30 border-weddingGold/10 bg-white/50 backdrop-blur-sm rounded-2xl text-center shadow-sm hover:shadow-md transition-all duration-500 relative mt-4">
+                <div className="h-50 max-h-52 p-8 border border-weddingGold shadow-lg shadow-weddingGold/30 hover:shadow-xl hover:shadow-weddingGold/60 hover:border-weddingGold-light bg-white/50 backdrop-blur-sm rounded-2xl text-center transition-all duration-500 relative mt-4">
                   <div className="text-4xl text-weddingGold/20 absolute -top-4 left-1/2 -translate-x-1/2 mb-4 font-serif">
                     &ldquo;
                   </div>
@@ -124,7 +124,7 @@ export default function VoeuxSlider() {
 
       {/* Form */}
       <motion.div 
-        className="max-w-xl mx-auto bg-gray-50/80 p-8 rounded-2xl border border-gray-100 shadow-sm relative z-10"
+        className="max-w-xl mx-auto bg-gray-50/80 p-8 rounded-2xl border border-weddingGold shadow-lg shadow-weddingGold/30 relative z-10"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
