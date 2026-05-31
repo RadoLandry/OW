@@ -1,1 +1,37 @@
-[]
+[
+  {
+    "id": 1780235512466,
+    "nom": "Rakoto",
+    "presence": "present",
+    "accompagnants": 0,
+    "date": "2026-05-31T13:51:52.466Z"
+  },
+  {
+    "id": 1780235618639,
+    "nom": "Bako",
+    "presence": "present",
+    "accompagnants": 0,
+    "date": "2026-05-31T13:53:38.639Z"
+  },
+  {
+    "id": 1780235646783,
+    "nom": "Rb",
+    "presence": "absent",
+    "accompagnants": 0,
+    "date": "2026-05-31T13:54:06.783Z"
+  },
+  {
+    "id": 1780235868367,
+    "nom": "test",
+    "presence": "present",
+    "accompagnants": 0,
+    "date": "2026-05-31T13:57:48.367Z"
+  },
+  {
+    "id": 1780235905435,
+    "nom": "testee",
+    "presence": "absent",
+    "accompagnants": 0,
+    "date": "2026-05-31T13:58:25.435Z"
+  }
+]

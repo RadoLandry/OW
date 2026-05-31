@@ -15,7 +15,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Notre Mariage - Invitation",
+  title: "Landry & Belfah - Mariage",
   description: "Vous êtes cordialement invités à célébrer notre union",
 };
 
