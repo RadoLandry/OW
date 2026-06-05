@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
 import { Voeu } from "@/lib/models/Voeu";
+import { sendWishNotificationEmail } from "@/lib/mailer";
 
 export async function GET() {
   try {
@@ -23,7 +24,25 @@ export async function POST(request: Request) {
     }
 
     const voeu = await Voeu.create({ nom, message });
-    return NextResponse.json(voeu, { status: 201 });
+
+    try {
+      await sendWishNotificationEmail({
+        nom: voeu.nom,
+        message: voeu.message,
+        date: voeu.date,
+      });
+
+      return NextResponse.json({ ...voeu.toObject(), mailSent: true }, { status: 201 });
+    } catch (mailError: any) {
+      return NextResponse.json(
+        {
+          ...voeu.toObject(),
+          mailSent: false,
+          mailError: mailError?.message || "Email non envoyé",
+        },
+        { status: 201 }
+      );
+    }
   } catch (err: any) {
     return NextResponse.json({ error: err?.message || "Erreur serveur" }, { status: 500 });
   }

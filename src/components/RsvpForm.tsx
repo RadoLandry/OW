@@ -131,8 +131,8 @@ export default function RsvpForm() {
                     defaultValue="0"
                     className="w-full bg-transparent border-b-2 border-gray-200 px-2 py-3 focus:outline-none focus:border-weddingGold transition-colors text-gray-700"
                   >
-                    <option value="0">1</option>
-                    <option value="1">2</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
                   </select>
                 </div>
               </div>

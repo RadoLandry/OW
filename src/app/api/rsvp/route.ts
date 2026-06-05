@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
 import { Rsvp } from "@/lib/models/Rsvp";
+import { sendRsvpNotificationEmail } from "@/lib/mailer";
 
 export async function GET() {
   try {
@@ -23,7 +24,26 @@ export async function POST(request: Request) {
     }
 
     const rsvp = await Rsvp.create({ nom, presence, accompagnants: accompagnants || 0 });
-    return NextResponse.json(rsvp, { status: 201 });
+
+    try {
+      await sendRsvpNotificationEmail({
+        nom: rsvp.nom,
+        presence: rsvp.presence,
+        accompagnants: rsvp.accompagnants,
+        date: rsvp.date,
+      });
+
+      return NextResponse.json({ ...rsvp.toObject(), mailSent: true }, { status: 201 });
+    } catch (mailError: any) {
+      return NextResponse.json(
+        {
+          ...rsvp.toObject(),
+          mailSent: false,
+          mailError: mailError?.message || "Email non envoyé",
+        },
+        { status: 201 }
+      );
+    }
   } catch (err: any) {
     return NextResponse.json({ error: err?.message || "Erreur serveur" }, { status: 500 });
   }
