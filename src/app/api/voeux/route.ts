@@ -1,13 +1,12 @@
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { connectDB } from "@/lib/mongodb";
+import { Voeu } from "@/lib/models/Voeu";
+import { sendWishNotificationEmail } from "@/lib/mailer";
 
 export async function GET() {
   try {
-    const { data, error } = await supabase
-      .from("voeux")
-      .select("*")
-      .order("date", { ascending: false });
-    if (error) throw error;
+    await connectDB();
+    const data = await Voeu.find().sort({ date: -1 }).lean();
     return NextResponse.json(data);
   } catch {
     return NextResponse.json([]);
@@ -16,6 +15,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
+    await connectDB();
     const body = await request.json();
     const { nom, message } = body;
 
@@ -23,21 +23,34 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Champs requis manquants" }, { status: 400 });
     }
 
-    const { data, error } = await supabase
-      .from("voeux")
-      .insert([{ nom, message }])
-      .select()
-      .single();
-    if (error) throw error;
+    const voeu = await Voeu.create({ nom, message });
 
-    return NextResponse.json(data, { status: 201 });
+    try {
+      await sendWishNotificationEmail({
+        nom: voeu.nom,
+        message: voeu.message,
+        date: voeu.date,
+      });
+
+      return NextResponse.json({ ...voeu.toObject(), mailSent: true }, { status: 201 });
+    } catch (mailError: any) {
+      return NextResponse.json(
+        {
+          ...voeu.toObject(),
+          mailSent: false,
+          mailError: mailError?.message || "Email non envoyé",
+        },
+        { status: 201 }
+      );
+    }
   } catch (err: any) {
-    return NextResponse.json({ error: err?.message || "Erreur serveur", details: err }, { status: 500 });
+    return NextResponse.json({ error: err?.message || "Erreur serveur" }, { status: 500 });
   }
 }
 
 export async function DELETE(request: Request) {
   try {
+    await connectDB();
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");
 
@@ -45,9 +58,7 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ error: "ID manquant" }, { status: 400 });
     }
 
-    const { error } = await supabase.from("voeux").delete().eq("id", id);
-    if (error) throw error;
-
+    await Voeu.findByIdAndDelete(id);
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
