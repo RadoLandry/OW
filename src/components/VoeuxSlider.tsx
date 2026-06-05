@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { motion } from "framer-motion";
 import "swiper/css";
+import type { Swiper as SwiperType } from "swiper";
 
 interface Voeu {
   id: string | number;
@@ -16,6 +17,7 @@ interface Voeu {
 export default function VoeuxSlider() {
   const [voeux, setVoeux] = useState<Voeu[]>([]);
   const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 
   useEffect(() => {
     fetch("/api/voeux")
@@ -106,20 +108,44 @@ export default function VoeuxSlider() {
             breakpoints={{ 768: { slidesPerView: 2 } }}
             loop={voeux.length > 2}
             className="pb-10"
+            onSwiper={setSwiperInstance}
           >
             {voeux.map((v) => (
               <SwiperSlide key={v.id}>
                 <div className="h-50 max-h-52 p-8 border border-weddingGold shadow-lg shadow-weddingGold/30 hover:shadow-xl hover:shadow-weddingGold/60 hover:border-weddingGold-light bg-white/50 backdrop-blur-sm rounded-2xl text-center transition-all duration-500 relative mt-4">
-                  <div className="text-4xl text-weddingGold/20 absolute -top-4 left-1/2 -translate-x-1/2 mb-4 font-serif">
+                  <div className="text-6xl md:text-7xl text-weddingGold/20 absolute top-4 left-4 font-serif leading-none">
                     &ldquo;
                   </div>
-                  <p className="text-gray-600 italic mb-6 leading-relaxed pt-2 font-light text-sm md:text-base">{v.message}</p>
+                  <p className="text-gray-600 italic mb-6 leading-relaxed pt-2 font-light text-sm md:text-base relative z-10">{v.message}</p>
                   <div className="w-12 h-px bg-weddingGold/20 mx-auto mb-4" />
                   <p className="text-weddingGold-dark font-medium text-sm tracking-wider uppercase">— {v.nom}</p>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
+
+          {voeux.length > 1 && (
+            <>
+              <button
+                type="button"
+                aria-label="Message précédent"
+                onClick={() => swiperInstance?.slidePrev()}
+                style={{ WebkitTapHighlightColor: "transparent" }}
+                className="z-10 absolute left-0 top-1/2 -translate-y-1/2 translate-x-2 md:-translate-x-8 w-9 h-9 md:w-10 md:h-10 rounded-none md:rounded-full border-0 md:border-2 md:border-weddingGold text-weddingGold text-3xl md:text-xl leading-none flex items-center justify-center bg-transparent md:bg-white/95 hover:bg-transparent md:hover:bg-weddingGold hover:text-weddingGold md:hover:text-white active:bg-transparent transition-all duration-300 shadow-none md:shadow-lg md:shadow-weddingGold/20 focus:outline-none focus:ring-0 md:focus:ring-2 md:focus:ring-weddingGold/50"
+              >
+                &#8249;
+              </button>
+              <button
+                type="button"
+                aria-label="Message suivant"
+                onClick={() => swiperInstance?.slideNext()}
+                style={{ WebkitTapHighlightColor: "transparent" }}
+                className="z-10 absolute right-0 top-1/2 -translate-y-1/2 -translate-x-2 md:translate-x-8 w-9 h-9 md:w-10 md:h-10 rounded-none md:rounded-full border-0 md:border-2 md:border-weddingGold text-weddingGold text-3xl md:text-xl leading-none flex items-center justify-center bg-transparent md:bg-white/95 hover:bg-transparent md:hover:bg-weddingGold hover:text-weddingGold md:hover:text-white active:bg-transparent transition-all duration-300 shadow-none md:shadow-lg md:shadow-weddingGold/20 focus:outline-none focus:ring-0 md:focus:ring-2 md:focus:ring-weddingGold/50"
+              >
+                &#8250;
+              </button>
+            </>
+          )}
         </motion.div>
       )}
 
