@@ -6,14 +6,18 @@ import { CheckCircle, XCircle, Heart } from "lucide-react";
 
 export default function RsvpForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [presenceChoice, setPresenceChoice] = useState<"present" | "absent" | "">("");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("loading");
     const form = new FormData(e.currentTarget);
+    const presence = String(form.get("presence") || "");
+    const nom = String(form.get("nom") || "");
     const data = {
-      nom: form.get("nom"),
-      presence: form.get("presence"),
+      nom: presence === "present" ? nom : "Invité",
+      presence,
+      accompagnants: presence === "present" ? Number(form.get("accompagnants") || 0) : 0,
     };
 
     try {
@@ -84,16 +88,6 @@ export default function RsvpForm() {
         ) : (
           <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
             <div>
-              <label className="block text-xs font-medium text-gray-700 mb-2 uppercase tracking-wider">Nom & Prénom</label>
-              <input
-                name="nom"
-                required
-                className="w-full bg-transparent border-b-2 border-gray-200 px-2 py-3 focus:outline-none focus:border-weddingGold transition-colors placeholder:font-light"
-                placeholder="Ex: Manitrarisoa Bakoly ou Famille Rakoto"
-              />
-            </div>
-
-            <div>
               <label className="block text-xs font-medium text-gray-700 mb-4 uppercase tracking-wider">Serez-vous présent ?</label>
               <div className="flex gap-4 flex-col sm:flex-row">
                 {[
@@ -106,6 +100,7 @@ export default function RsvpForm() {
                       name="presence"
                       value={value}
                       required
+                      onChange={() => setPresenceChoice(value as "present" | "absent")}
                       className="peer sr-only"
                     />
                     <div className="flex items-center justify-center gap-2 text-center py-3 px-4 border border-gray-200 rounded-xl cursor-pointer transition-all peer-checked:border-weddingGold peer-checked:bg-weddingGold/5 peer-checked:text-weddingGold-dark hover:border-weddingGold/40 text-sm font-medium text-gray-600">
@@ -116,6 +111,32 @@ export default function RsvpForm() {
                 ))}
               </div>
             </div>
+
+            {presenceChoice === "present" && (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 items-end">
+                <div className="md:col-span-2">
+                  <label className="block text-xs font-medium text-gray-700 mb-2 uppercase tracking-wider">Nom & Prénom</label>
+                  <input
+                    name="nom"
+                    required={presenceChoice === "present"}
+                    className="w-full bg-transparent border-b-2 border-gray-200 px-2 py-3 focus:outline-none focus:border-weddingGold transition-colors placeholder:font-light"
+                    placeholder="Ex: Manitrarisoa Bakoly ou Famille Rakoto"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-medium text-gray-700 mb-2 uppercase tracking-wider">Nombre de personnes</label>
+                  <select
+                    name="accompagnants"
+                    defaultValue="0"
+                    className="w-full bg-transparent border-b-2 border-gray-200 px-2 py-3 focus:outline-none focus:border-weddingGold transition-colors text-gray-700"
+                  >
+                    <option value="0">1</option>
+                    <option value="1">2</option>
+                  </select>
+                </div>
+              </div>
+            )}
 
             <button
               type="submit"

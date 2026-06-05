@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { Trash2, Users, MessageSquare, AlertTriangle } from "lucide-react";
 
 type Rsvp = {
-  id: string | number;
+  id?: string | number;
+  _id?: string | number;
   nom: string;
   presence: string;
   accompagnants: number;
@@ -12,7 +13,8 @@ type Rsvp = {
 };
 
 type Voeu = {
-  id: string | number;
+  id?: string | number;
+  _id?: string | number;
   nom: string;
   message: string;
   date: string;
@@ -62,6 +64,8 @@ export default function Dashboard() {
   const [rsvpPage, setRsvpPage] = useState(1);
   const [voeuxPage, setVoeuxPage] = useState(1);
   const PAGE_SIZE = 5;
+
+  const getItemId = (item: { id?: string | number; _id?: string | number }) => item.id ?? item._id;
 
   const fetchRsvps = async () => {
     try {
@@ -168,7 +172,7 @@ export default function Dashboard() {
                 </thead>
                 <tbody>
                   {rsvps.slice((rsvpPage - 1) * PAGE_SIZE, rsvpPage * PAGE_SIZE).map((rsvp) => (
-                    <tr key={rsvp.id} className="hover:bg-gray-50/50 border-b last:border-0 transition-colors">
+                    <tr key={String(getItemId(rsvp) ?? `rsvp-${rsvp.nom}-${rsvp.date}`)} className="hover:bg-gray-50/50 border-b last:border-0 transition-colors">
                       <td className="p-3 font-medium">{rsvp.nom}</td>
                       <td className="p-3">
                         <span className={`px-2 py-1 rounded-full text-xs font-semibold ${rsvp.presence === "present" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}>
@@ -180,7 +184,14 @@ export default function Dashboard() {
                       </td>
                       <td className="p-3 text-right">
                         <div className="flex justify-end gap-2 text-gray-400">
-                          <button onClick={() => deleteRsvp(rsvp.id)} className="p-1.5 hover:bg-red-100 hover:text-red-600 rounded-md transition-colors" title="Supprimer">
+                          <button
+                            onClick={() => {
+                              const id = getItemId(rsvp);
+                              if (id !== undefined) deleteRsvp(id);
+                            }}
+                            className="p-1.5 hover:bg-red-100 hover:text-red-600 rounded-md transition-colors"
+                            title="Supprimer"
+                          >
                             <Trash2 size={18} />
                           </button>
                         </div>
@@ -231,7 +242,7 @@ export default function Dashboard() {
                 </thead>
                 <tbody>
                   {voeux.slice((voeuxPage - 1) * PAGE_SIZE, voeuxPage * PAGE_SIZE).map((voeu) => (
-                    <tr key={voeu.id} className="hover:bg-gray-50/50 border-b last:border-0 transition-colors">
+                    <tr key={String(getItemId(voeu) ?? `voeu-${voeu.nom}-${voeu.date}`)} className="hover:bg-gray-50/50 border-b last:border-0 transition-colors">
                       <td className="p-3 font-medium">{voeu.nom}</td>
                       <td className="p-3 text-gray-700 italic">&quot;{voeu.message}&quot;</td>
                       <td className="p-3 text-gray-500 text-sm">
@@ -239,7 +250,14 @@ export default function Dashboard() {
                       </td>
                       <td className="p-3 text-right">
                         <div className="flex justify-end gap-2 text-gray-400">
-                          <button onClick={() => deleteVoeu(voeu.id)} className="p-1.5 hover:bg-red-100 hover:text-red-600 rounded-md transition-colors" title="Supprimer">
+                          <button
+                            onClick={() => {
+                              const id = getItemId(voeu);
+                              if (id !== undefined) deleteVoeu(id);
+                            }}
+                            className="p-1.5 hover:bg-red-100 hover:text-red-600 rounded-md transition-colors"
+                            title="Supprimer"
+                          >
                             <Trash2 size={18} />
                           </button>
                         </div>
