@@ -101,7 +101,7 @@ export default function InfosPratiques() {
         <p className="font-serif text-weddingGold-dark text-xl italic drop-shadow-sm flex items-center justify-center gap-2">
           Avec tout notre amour <Heart className="w-5 h-5 text-weddingGold fill-weddingGold" />
         </p>
-        <p className="text-gray-400 text-sm mt-3 tracking-widest uppercase">23 Août 2026</p>
+        <p className="text-gray-400 text-sm mt-3 tracking-widest uppercase">23 Juillet 2026</p>
       </motion.div>
     </section>
   );

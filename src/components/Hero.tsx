@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const WEDDING_DATE = new Date("2026-08-23T15:00:00");
+const WEDDING_DATE = new Date("2026-07-23T15:00:00");
 
 interface TimeLeft {
   jours: number;
@@ -59,7 +59,7 @@ export default function Hero() {
           Landry & Belfah
         </h1>
         <p className="text-gray-600 text-lg md:text-xl font-light mt-6 tracking-wide">
-          23 Août 2026 • EKAR Vicent de Paul Ambatonilita
+          23 Juillet 2026 • EKAR Vicent de Paul Ambatonilita
         </p>
         
         {/* Subtle decorative curve */}
