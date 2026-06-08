@@ -69,7 +69,7 @@ export default function Liturgie() {
                 <p className="text-weddingGold-dark font-medium mb-6 italic text-lg opacity-90 mt-4">
                   ♪ {item.titre_chant}
                 </p>
-                <div className="bg-gray-50/50 p-6 rounded-lg w-full max-w-lg border border-gray-100">
+                <div className="bg-gray-50/50 p-6 rounded-lg w-full max-w-lg border border-gray-100 max-h-40 overflow-y-scroll">  
                   <p className="text-gray-600 whitespace-pre-line leading-relaxed text-sm md:text-base font-light italic">
                     {item.paroles}
                   </p>
