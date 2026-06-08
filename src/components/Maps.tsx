@@ -13,6 +13,13 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
+import ekar1 from "../../public/EKAR/ekar11.png";
+import ekar2 from "../../public/EKAR/ekar22.jpg";
+import ekar3 from "../../public/EKAR/ekar33.png";
+import ekar4 from "../../public/EKAR/ekar4.png";
+
+import espace1 from "../../public/espace/espace 11.png";
+import espace2 from "../../public/espace/espace22.png";
 
 const locations = [
   {
@@ -23,11 +30,7 @@ const locations = [
     mapSrc:
       "https://www.google.com/maps?q=EKAR+Ambatonilita,-18.9109535,47.5216453&z=17&output=embed",
     directions: "https://maps.google.com/?q=EKAR+Vicent+de+Paul+Ambatonilita+Antananarivo",
-    photos: [
-      "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1527580791834-4c8e2538f5b1?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80",
-    ],
+    photos: [ekar1, ekar2, ekar3, ekar4],
   },
   {
     title: "Réception — Espace fête",
@@ -38,11 +41,7 @@ const locations = [
       "https://www.google.com/maps?q=Ravaka+Espace+Tanjombato,-18.9643687,47.5290971&z=17&output=embed",
     directions:
       "https://www.google.com/maps/place/Ravaka+Espace+Tanjombato/@-18.9643687,47.5290971,705m/data=!3m2!1e3!4b1!4m6!3m5!1s0x21f07d1f6dd5d0bd:0x948b22d00a9ad617!8m2!3d-18.9643687!4d47.5290971!16s%2Fg%2F11h_d78778?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D",
-    photos: [
-      "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80",
-    ],
+    photos: [espace1, espace2],
   },
 ];
 
@@ -64,7 +63,7 @@ export default function Maps() {
 
     const intervalId = window.setInterval(() => {
       setCurrentPhotoIndex((prev) => (prev + 1) % activePhotos.length);
-    }, 3500);
+    }, 7000);
 
     return () => window.clearInterval(intervalId);
   }, [isModalOpen, activePhotos.length]);

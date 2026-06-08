@@ -1,51 +1,68 @@
 [
   {
-    "id": "intro",
-    "etape": "Entrée",
+    "id": "Hira Fidirana",
+    "etape": "Hira Fidirana",
     "heure": "15:00",
-    "titre_chant": "Jubilez, criez de joie",
-    "paroles": "R. Jubilez ! Criez de joie ! Acclamez le Dieu trois fois Saint !\nVenez le prier dans la paix, témoigner de son Amour.\nJubilez ! Criez de joie ! Pour Dieu notre Dieu."
+    "titre_chant": "Andeha hiseho anoloan’Andriamanitra | Vavaka sy Hira p. 769 -Hasina p. 303",
+    "paroles": "Andeha hiseho anoloan'Andriamanitra,\nAndeha hiseho anoloany amin-tsaotra,\nHankalaza azy amin'antsa,\nHankalaza azy amin-kira:\nAvia, derao, derao ny Tompo Andriamanitra.\n\n1 Nantsoiny isika zanany,\nNataony ira-pifaliana;\nFa hoy izy: ianareo no indro hirahiko,\nToy ny nanirahan'ny Ray ahy.\n\n2 Indro irahiko ianareo\nAmin'izao tontolo izao:\nIlaozy àry, afoizo ho ahy ireo tiana:\nSoa anie ny fanjakan'ny lanitra.\n\n3 Tsy sanatria irery isika\nHitondra ny hazo fijaliana:\nFa eo izy, Zoky tsy foy tsy mba mandao,\nHiaraka hamadi-bainga amintsika."
   },
   {
-    "id": "lecture",
-    "etape": "Première Lecture",
-    "heure": "15:15",
-    "titre_chant": "Psaume de la Création",
-    "paroles": "R. Mon Dieu, tu es grand, tu es beau,\nDieu vivant, Dieu très haut,\nTu es le Dieu d'amour."
+    "id": "fifonana",
+    "etape": "Hira Fifonana ",
+    "heure": "",
+    "titre_chant": "Diso taminao aho Tompo ô | Vavaka sy Hira p. 769 -Hasina p. 303",
+    "paroles": "1 Diso taminao aho, Tompo ô,\nAvelao ny heloko, aza arianao,\nAza arianao aho, Tompo ô,\nAza arianao aho fa iantrao.\n\nMifona re, diovy ny foko (indroa)\nHiverenako aminao.\n\n2 Osa sy malemy aho, Tompo ô,\nKa maniasia lavitra anao;\nAza atosikao aho, Tompo ô,\nAza atosikao aho fa iantrao.\n\n3 Omeo fo vaovao aho, Tompo ô,\nHanompoako anao an-kafaliana\nSy hiderako ny anaranao,\nHiderako ny anaranao, Tompo ô."
+  },
+  
+
+
+  {
+    "id": "voninahitra",
+    "etape": "Voninahitra",
+    "heure": "",
+    "titre_chant": "Voninahitra sy dera anie ho an’Andriamanitra loharanom-pitiavana Hasina p. 421",
+    "paroles": "Fiv :\nVoninahitra sy dera anie ho an'Andriamanitra\nLoharanom-pitiavana,\nFiadanana, hafaliana ho an'ny olombelona\n'Zay tsara sitrapo e.\n\n1 - Midera Anao 'zahay,\nmankalaza Anao, ry Ray,\nRy Tompo Andriamanitra ô :\nMitsaoka Anao 'zahay\nsy mihoby ny hasinao\nMisaotra Anao 'zahay e.\n\n2 - Ry Jesoa Tomponay ô,\nry Zanaky ny Ray,\nRy Tompo Andriamanitra ô :\nMamindrà fo aminay,\nfa Ianao no Zokinay,\nAfaho ny helokay e.\n\n3 - Ianao no avo indrindra,\nry Jesoa Tomponay,\nIanao re no Masina\nAnkavanan'Izy Ray,\nmiaraka amin'ny Fanahy\nKa omena fiderana."
   },
   {
-    "id": "evangile",
-    "etape": "Évangile",
-    "heure": "15:25",
-    "titre_chant": "Alléluia",
-    "paroles": "R. Alléluia, Alléluia, Alléluia !\nDieu est Amour, celui qui aime est né de Dieu,\nil connaît Dieu. Alléluia !"
+    "id": "vakiteny1",
+    "etape": "Vakiteny I",
+    "heure": "",
+    "titre_chant": "Vakiteny Voalohany: Vakiteny avy ao amin'ny Bokin'i Tobia  8: 7-10 ",
+    "paroles": "Salamo 128\n\nSetriny : Mba sambatra ‘zay matahotra ny Tompo re\n\nMba sambatra 'zay matahotra ny Tompo re,\nMba sambatra 'zay matoky, mino azy re,\nMba sambatra 'zay matahotra ny Tompo re,\nMba sambatra 'reo 'zay tia anao, ry Iaveh!\n"
   },
   {
-    "id": "voeux",
-    "etape": "Échange des vœux",
-    "heure": "15:35",
-    "titre_chant": "Que vive mon âme à te louer",
-    "paroles": "R. Que vive mon âme à te louer !\nTu es mon Dieu, je n'ai pas d'autre joie\nque de marcher vers toi."
+    "id": "vakiteny2",
+    "etape": "Vakiteny II",
+    "heure": "",
+    "titre_chant": "Kôrintianina (12, 31—13, 8a) \n“Ny fitiavana dia tsy ho levona mandrakizay”\n",
+    "paroles": "\nSalamo 128\n\n1. Sambatra izay matahotra an'ny Tompo, ka mandeha amin'ny làlany!\n2. Ny asan'ny tananao no hohaninao; sambatra ianao, ary hitondra soa.\n3. Ny vadinao ao an-tokantranonao, ho tahaka ny voaloboka mahavanom-boa; ny zanakao manodidina ny latabatrao, ho tahaka ny zanak'oliva.\n4. Eny, toy izany no hitahiana ny lehilahy matahotra an'ny Tompo.\n5. Hitahy anao avy ao Siona anie ny Tompo! Hahita ny fiadanan'i Jerosalema ianao, amin'ny andro rehetra hiainanao.\n6. Hahita ny zanaky ny zanakao ianao. Ho amin'Israely anie ny fiadanana!\n7. Mba sambatra izay matahotra an'ny Tompo!\n"
   },
   {
-    "id": "offertoire",
-    "etape": "Offertoire",
-    "heure": "15:50",
-    "titre_chant": "Je vous salue Marie",
-    "paroles": "Je vous salue Marie, pleine de grâce,\nLe Seigneur est avec vous.\nVous êtes bénie entre toutes les femmes\net Jésus, le fruit de vos entrailles, est béni."
+    "id": "ranombavaka",
+    "etape": "Ranombavakin’ny mpino",
+    "heure": "",
+    "titre_chant": "Tompo ô henoy 'zahay | Hasina p. 166",
+    "paroles": "Tompo ô, henoy 'zahay miantso anao,\nMba ekeo ny vavakay mitalaho. "
   },
   {
-    "id": "communion",
-    "etape": "Communion",
-    "heure": "16:05",
-    "titre_chant": "Tu es là au cœur de nos vies",
-    "paroles": "R. Tu es là au cœur de nos vies,\net c'est toi qui nous fais vivre,\nTu es là au cœur de nos vies,\nbien vivant, ô Jésus-Christ."
+    "id": "rakitra",
+    "etape": "Rakitra",
+    "heure": "",
+    "titre_chant": "Mahaiza misaotra sy mankasitraka | Hasina p. 310 - Vavaka sy Hira p. 529",
+    "paroles": "Mahaiza misaotra sy mankasitraka\nNy Tompo nahary nifidy anao\nTanatin'ny maro, tanatin'ny tsara, Misaora!\nNiangaram-pitiavan'i Jesoa Tompo ianao\nNatorony lalana lavorary\nTsiambaratelony avy amy Ray, Misaora!\n\n1. Isika va re no nahay nifidy,\nIsika no tsara mahatehotia?\nIsika ve no hafa noho 'reo nania? Misaora!\nFa Izy no tsara sy heni-tsoa\nFa Izy hatrizay no tia mialoha\nNiantso mangina ny anaranao: Misaora!\n\n2. Mba tsarotsarovy irony lasa\nTombatombano izay kinasa\nTsisy tafita raha tsy ny Tompo: Misaora!\nNa teo ny oram-baratra sy ny tselatra\nNa teo ny andro sarotra sy haizina\nTsy nisy nikemo fa teo lalandava ny Tompo\n\n3. Fa inona kosa no havalinao\nNy tombom-pitiavany tsy nandao\nNanenika ny fiainanao tontolo? Misaora!\nAza misasatra mankalaza\nManandra-tanana ho fiderana\nIlay Tompo tia miahy anao: Misaora!\n\n4. Akaro ny antsa arahin-kira\nAkaro ny vavaka ho fihobiana\nHo setrim-pitiavana isan'ora: Misaora!\nAtreho ny Tompo manao Sorona\nKalisim-pisaorana amy Ray:\nNy Ainy no atolony mba ho ohatra: Misaora!\n\nEny re, misaora - Eny re, misaora - Eny re, misaora!"
   },
   {
-    "id": "sortie",
-    "etape": "Sortie",
-    "heure": "16:20",
-    "titre_chant": "Bénissez Dieu",
-    "paroles": "R. Bénissez Dieu, vous serviteurs de Dieu,\nRedites sans fin le cantique éternel,\nAu Dieu de l'univers, au Roi du Ciel !"
+    "id": "fanolorana",
+    "etape": "Fanolorana",
+    "heure": "",
+    "titre_chant": "Hira fanolorana: Atolotro Anao ry Tompo ireto fanatitra ireto",
+    "paroles": "Atolotro Anao ry Tompo ireto fanatitra ireto,\nAtolotra Anao ry Tompo,\nIreto fanatitray ireto,\nAtolotray an-kafaliana\nSy am-panajana Anao.\n\nRaiso, ny mofo\nRaiso, ny divay\nRaiso, ny fiainanay\nRaiso, e e e ia !"
+  },
+  {
+    "id": "fankamasinana",
+    "etape": "Fankamasinana",
+    "heure": "",
+    "titre_chant": "Masina (3) ny Tompo Andriamanitry ny hery rehetra",
+    "paroles": "Masina, Masina, Masina,\nNy Tompo Andriamanitry ny hery rehetra\nMasina, Masina, Masina,\nNy Tompo Andriamanitry ny hery rehetra\n\n1. Feno ny voninahitrao ny tany aman-danitra (2)\nHozana, Hôzana, any amin'ny avo indrindra (2)\n\nMasina, Masina, Masina,\nNy Tompo Andriamanitry ny hery rehetra\nMasina, Masina, Masina,\nNy Tompo Andriamanitry ny hery rehetra\n\n2. Hosoavina anie ilay avy amin'ny anaran'ny Tompo\nHozana, Hôzana, any amin'ny avo indrindra (2)"
   }
 ]
