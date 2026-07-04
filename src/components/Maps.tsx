@@ -25,7 +25,7 @@ const locations = [
   {
     title: "Cérémonie — Église",
     address: "EKAR Vicent de Paul Ambatonilita, Isoraka-Antananarivo",
-    time: "10h00",
+    time: "09h30",
     icon: Church,
     mapSrc:
       "https://www.google.com/maps?q=EKAR+Ambatonilita,-18.9109535,47.5216453&z=17&output=embed",

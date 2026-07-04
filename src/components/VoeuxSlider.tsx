@@ -116,7 +116,11 @@ export default function VoeuxSlider() {
                   <div className="text-6xl md:text-7xl text-weddingGold/20 absolute top-4 left-4 font-serif leading-none">
                     &ldquo;
                   </div>
-                  <p className="text-gray-600 italic mb-6 leading-relaxed pt-2 font-light text-sm md:text-base relative z-10">{v.message}</p>
+                  <p className={`
+                    text-gray-600 italic ${v.message.length > 120 ? "mb-0 leading-5" : "mb-6 leading-relaxed"}  
+                      pt-2 font-light text-sm md:text-base relative z-10`}>
+                        {v.message}
+                  </p>
                   <div className="w-12 h-px bg-weddingGold/20 mx-auto mb-4" />
                   <p className="text-weddingGold-dark font-medium text-sm tracking-wider uppercase">— {v.nom}</p>
                 </div>
