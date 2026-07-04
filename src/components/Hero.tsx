@@ -3,13 +3,21 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const WEDDING_DATE = new Date("2026-07-23T15:00:00");
+const WEDDING_DATE = new Date("2026-07-23T15:01:00");
 
 interface TimeLeft {
   jours: number;
   heures: number;
   minutes: number;
   secondes: number;
+}
+
+function isSameCalendarDay(a: Date, b: Date): boolean {
+  return (
+    a.getFullYear() === b.getFullYear() &&
+    a.getMonth() === b.getMonth() &&
+    a.getDate() === b.getDate()
+  );
 }
 
 function getTimeLeft(): TimeLeft {
@@ -25,12 +33,17 @@ function getTimeLeft(): TimeLeft {
 
 export default function Hero() {
   const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
+  const isWeddingDay = isSameCalendarDay(WEDDING_DATE, new Date());
 
   useEffect(() => {
+    if (isWeddingDay) {
+      return;
+    }
+
     const timer = setInterval(() => setTimeLeft(getTimeLeft()), 1000);
     setTimeout(() => setTimeLeft(getTimeLeft()), 0);
     return () => clearInterval(timer);
-  }, []);
+  }, [isWeddingDay]);
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center text-center px-4 relative overflow-hidden">
@@ -74,34 +87,57 @@ export default function Hero() {
       </motion.div>
 
       {/* Countdown */}
-      <motion.div
-        className="flex gap-8 md:gap-14 mt-16 z-10 relative"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, duration: 1 }}
-      >
-        {(["jours", "heures", "minutes", "secondes"] as const).map((label) => (
-          <div key={label} className="flex flex-col items-center">
-            <span className="font-serif text-4xl md:text-6xl text-weddingGold drop-shadow-sm">
-              {timeLeft ? String(timeLeft[label]).padStart(2, "0") : "00"}
-            </span>
-            <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-gray-500 mt-2 font-medium">
-              {label}
-            </span>
-          </div>
-        ))}
-      </motion.div>
+      {!isWeddingDay && (
+        <motion.div
+          className="flex gap-8 md:gap-14 mt-16 z-10 relative"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 1 }}
+        >
+          {(["jours", "heures", "minutes", "secondes"] as const).map((label) => (
+            <div key={label} className="flex flex-col items-center">
+              <span className="font-serif text-4xl md:text-6xl text-weddingGold drop-shadow-sm">
+                {timeLeft ? String(timeLeft[label]).padStart(2, "0") : "00"}
+              </span>
+              <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-gray-500 mt-2 font-medium">
+                {label}
+              </span>
+            </div>
+          ))}
+        </motion.div>
+      )}
 
-      {/* CTA */}
-      <motion.a
-        href="#rsvp"
-        className="mt-16 mb-3 px-10 py-4 border border-weddingGold text-weddingGold-dark hover:bg-weddingGold hover:text-white transition-all duration-500 uppercase tracking-[0.2em] text-sm z-10 relative bg-white/50 backdrop-blur hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-      >
-        Confirmer ma présence
-      </motion.a>
+      {/* CTA / Grand Jour */}
+      {isWeddingDay ? (
+        <motion.div
+           className="mt-28 md:mt-12 mb-3 flex flex-col items-center z-10 relative"
+           initial={{ opacity: 0, y: 20 }}
+           animate={{ opacity: 1, y: 0 }}
+           transition={{ delay: 0.4, duration: 1 }}
+        >
+          <motion.h2
+            className="mb-6 text-4xl md:text-6xl font-serif text-weddingGold drop-shadow-md"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+          >
+            C&apos;est le jour J !
+          </motion.h2>
+          <p className="text-gray-700 text-lg md:text-xl font-light italic mt-2 px-6 py-4 bg-white/30 backdrop-blur-md rounded-2xl border border-weddingGold/20 shadow-sm max-w-md mx-auto">
+            &quot;Praise the Lord&quot;
+          </p>
+        </motion.div>
+      ) : (
+        <motion.a
+          href="#rsvp"
+          className="mt-16 mb-3 px-10 py-4 border border-weddingGold text-weddingGold-dark hover:bg-weddingGold hover:text-white transition-all duration-500 uppercase tracking-[0.2em] text-sm z-10 relative bg-white/50 backdrop-blur hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+        >
+          Confirmer ma présence
+        </motion.a>
+      )}
     </section>
   );
 }
