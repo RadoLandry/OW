@@ -64,5 +64,47 @@
     "heure": "",
     "titre_chant": "Masina (3) ny Tompo Andriamanitry ny hery rehetra",
     "paroles": "Masina, Masina, Masina,\nNy Tompo Andriamanitry ny hery rehetra\nMasina, Masina, Masina,\nNy Tompo Andriamanitry ny hery rehetra\n\n1. Feno ny voninahitrao ny tany aman-danitra (2)\nHozana, Hôzana, any amin'ny avo indrindra (2)\n\nMasina, Masina, Masina,\nNy Tompo Andriamanitry ny hery rehetra\nMasina, Masina, Masina,\nNy Tompo Andriamanitry ny hery rehetra\n\n2. Hosoavina anie ilay avy amin'ny anaran'ny Tompo\nHozana, Hôzana, any amin'ny avo indrindra (2)"
+  },
+  {
+    "id": "rainay",
+    "etape": "Rainay ",
+    "heure": "",
+    "titre_chant": "Tsy misalasala miantso anao izahay Ray ô",
+    "paroles": "Tsy misalasala miantso anao izahay Ray ô..."
+  },
+  {
+    "id": "zanakondry",
+    "etape": "Ry zanakondrin’Andriamanitra",
+    "heure": "",
+    "titre_chant": "Ry zanakondrin’Andriamanitra",
+    "paroles": "Ry zanakondrin’Andriamanitra..."
+  },
+  {
+    "id": "komonio",
+    "etape": "Komonio",
+    "heure": "",
+    "titre_chant": "Tiako ny hiaraka aminao Jesoa | Hasina p. 119 - Vavaka sy Hira p. 652",
+    "paroles": "Tiako ny hiaraka aminao Jesoa..."
+  },
+  {
+    "id": "fanateram-boninkazo",
+    "etape": "Fanateram-boninkazo",
+    "heure": "",
+    "titre_chant": "La première en chemin",
+    "paroles": "La première en chemin..."
+  },
+  {
+    "id": "rakitfisaorana",
+    "etape": "Rakitra fisaorana",
+    "heure": "",
+    "titre_chant": "Fa ny fahasoavan’Andriamanitra - Misaotra bevata | Hasina p. 828",
+    "paroles": ""
+  },
+    {
+    "id": "fanirahana",
+    "etape": "Finirahana",
+    "heure": "",
+    "titre_chant": "Indro irahiko ianao hampanjaka fitiavana | Hasina p. 308 - Vavaka sy Hira p. 788",
+    "paroles": ""
   }
 ]

@@ -112,13 +112,25 @@ export default function VoeuxSlider() {
           >
             {voeux.map((v) => (
               <SwiperSlide key={v.id}>
-                <div className="h-50 max-h-52 p-8 border border-weddingGold shadow-lg shadow-weddingGold/30 hover:shadow-xl hover:shadow-weddingGold/60 hover:border-weddingGold-light bg-white/50 backdrop-blur-sm rounded-2xl text-center transition-all duration-500 relative mt-4">
+                <div className="h-52 p-8 border border-weddingGold shadow-lg shadow-weddingGold/30 hover:shadow-xl hover:shadow-weddingGold/60 hover:border-weddingGold-light bg-white/50 backdrop-blur-sm rounded-2xl text-center transition-all duration-500 relative mt-4 flex flex-col">
                   <div className="text-6xl md:text-7xl text-weddingGold/20 absolute top-4 left-4 font-serif leading-none">
                     &ldquo;
                   </div>
-                  <p className="text-gray-600 italic mb-6 leading-relaxed pt-2 font-light text-sm md:text-base relative z-10">{v.message}</p>
-                  <div className="w-12 h-px bg-weddingGold/20 mx-auto mb-4" />
-                  <p className="text-weddingGold-dark font-medium text-sm tracking-wider uppercase">— {v.nom}</p>
+                  <div
+                    className={`relative z-10 flex-1 overflow-hidden pt-2 ${
+                      v.message.length > 120 ? "" : "flex items-center justify-center"
+                    }`}
+                  >
+                    <p
+                      className={`${v.message.length > 120 ? "h-full overflow-y-auto pr-2" : "max-w-[90%]"} text-gray-600 italic font-light text-sm md:text-base ${
+                        v.message.length > 120 ? "leading-5" : "leading-relaxed"
+                      }`}
+                    >
+                      {v.message}
+                    </p>
+                  </div>
+                  <div className="w-12 h-px bg-weddingGold/20 mx-auto mt-4 mb-4 shrink-0" />
+                  <p className="text-weddingGold-dark font-medium text-sm tracking-wider uppercase shrink-0">— {v.nom}</p>
                 </div>
               </SwiperSlide>
             ))}
